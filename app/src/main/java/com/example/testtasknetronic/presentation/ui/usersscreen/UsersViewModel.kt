@@ -21,8 +21,8 @@ class UsersViewModel @Inject constructor(
 
     fun getUsers() {
         viewModelScope.launch(Dispatchers.IO) {
-            val test = getUsersUseCase.execute()
             _userResponse.postValue(Resource.loading(null))
+            val test = getUsersUseCase.execute()
             _userResponse.postValue(test)
         }
     }
