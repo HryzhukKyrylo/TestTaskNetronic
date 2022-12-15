@@ -11,7 +11,8 @@ class GetUsersUseCase @Inject constructor(
 ) {
     suspend fun execute(): Resource<List<UserModel>> {
         val res = try {
-            val resVal = repository.getUsers(5)//todo implement random number
+            val requaireRandomNumber = (0..20).random()
+            val resVal = repository.getUsers(requaireRandomNumber)
             if (resVal.isSuccessful) {
                 val listUsers = resVal.body()?.results?.map { it.mapToDomain() } ?: emptyList()
                 Resource.success(listUsers)
