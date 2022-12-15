@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashScreenFragment">
+
+    <fragment
+        android:id="@+id/splashScreenFragment"
+        android:name="com.example.testtasknetronic.presetation.ui.splashscreen.SplashScreenFragment"
+        android:label="fragment_splash_screen"
+        tools:layout="@layout/fragment_splash_screen">
+        <action
+            android:id="@+id/action_splashScreenFragment_to_usersScreenFragment"
+            app:destination="@id/usersScreenFragment"
+            app:popUpTo="@id/splashScreenFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/historyScreenFragment"
+        android:name="com.example.testtasknetronic.presetation.ui.historyscreen.HistoryScreenFragment"
+        android:label="fragment_history_screen"
+        tools:layout="@layout/fragment_history_screen" />
+    <fragment
+        android:id="@+id/userInfoScreenFragment"
+        android:name="com.example.testtasknetronic.presetation.ui.userinfoscreen.UserInfoScreenFragment"
+        android:label="fragment_user_info_screen"
+        tools:layout="@layout/fragment_user_info_screen" />
+    <fragment
+        android:id="@+id/usersScreenFragment"
+        android:name="com.example.testtasknetronic.presetation.ui.usersscreen.UsersScreenFragment"
+        android:label="fragment_users_screen"
+        tools:layout="@layout/fragment_users_screen">
+        <action
+            android:id="@+id/action_usersScreenFragment_to_userInfoScreenFragment"
+            app:destination="@id/userInfoScreenFragment"
+            app:popUpTo="@id/usersScreenFragment" />
+        <action
+            android:id="@+id/action_usersScreenFragment_to_historyScreenFragment"
+            app:destination="@id/historyScreenFragment"
+            app:popUpTo="@id/usersScreenFragment" />
+    </fragment>
+</navigation>

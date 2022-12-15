@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presetation.ui.usersscreen.UsersScreenFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <Button
+        android:id="@+id/btnGoToInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="to info"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/btnGoToHistory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="to history"
+        app:layout_constraintEnd_toEndOf="@id/btnGoToInfo"
+        app:layout_constraintStart_toStartOf="@id/btnGoToInfo"
+        app:layout_constraintTop_toBottomOf="@id/btnGoToInfo" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,10 +5,11 @@
     android:layout_height="match_parent"
     tools:context=".presetation.ui.splashscreen.SplashScreenFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
+        android:id="@+id/ivGif"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:contentDescription="@string/splach_screen_launch_gif"
+        android:scaleType="centerCrop" />
 
 </FrameLayout>
