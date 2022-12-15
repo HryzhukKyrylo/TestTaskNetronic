@@ -1,4 +1,4 @@
-package com.example.testtasknetronic.presetation.ui.splashscreen
+package com.example.testtasknetronic.presentation.ui.splashscreen
 
 import android.os.Bundle
 import android.view.View
@@ -7,7 +7,7 @@ import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.testtasknetronic.R
 import com.example.testtasknetronic.databinding.FragmentSplashScreenBinding
-import com.example.testtasknetronic.presetation.ui.base.BaseFragment
+import com.example.testtasknetronic.presentation.ui.base.BaseFragment
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

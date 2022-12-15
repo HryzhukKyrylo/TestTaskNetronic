@@ -1,10 +1,10 @@
-package com.example.testtasknetronic.presetation.ui.historyscreen
+package com.example.testtasknetronic.presentation.ui.userinfoscreen
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import com.example.testtasknetronic.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -14,10 +14,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [HistoryScreenFragment.newInstance] factory method to
+ * Use the [UserInfoScreenFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class HistoryScreenFragment : Fragment() {
+class UserInfoScreenFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -35,7 +35,7 @@ class HistoryScreenFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_history_screen, container, false)
+        return inflater.inflate(R.layout.fragment_user_info_screen, container, false)
     }
 
     companion object {
@@ -45,12 +45,12 @@ class HistoryScreenFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment HistoryScreenFragment.
+         * @return A new instance of fragment UserInfoScreenFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            HistoryScreenFragment().apply {
+            UserInfoScreenFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

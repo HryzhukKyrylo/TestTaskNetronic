@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splashScreenFragment"
-        android:name="com.example.testtasknetronic.presetation.ui.splashscreen.SplashScreenFragment"
+        android:name="com.example.testtasknetronic.presentation.ui.splashscreen.SplashScreenFragment"
         android:label="fragment_splash_screen"
         tools:layout="@layout/fragment_splash_screen">
         <action
@@ -18,17 +18,17 @@
     </fragment>
     <fragment
         android:id="@+id/historyScreenFragment"
-        android:name="com.example.testtasknetronic.presetation.ui.historyscreen.HistoryScreenFragment"
+        android:name="com.example.testtasknetronic.presentation.ui.historyscreen.HistoryScreenFragment"
         android:label="fragment_history_screen"
         tools:layout="@layout/fragment_history_screen" />
     <fragment
         android:id="@+id/userInfoScreenFragment"
-        android:name="com.example.testtasknetronic.presetation.ui.userinfoscreen.UserInfoScreenFragment"
+        android:name="com.example.testtasknetronic.presentation.ui.userinfoscreen.UserInfoScreenFragment"
         android:label="fragment_user_info_screen"
         tools:layout="@layout/fragment_user_info_screen" />
     <fragment
         android:id="@+id/usersScreenFragment"
-        android:name="com.example.testtasknetronic.presetation.ui.usersscreen.UsersScreenFragment"
+        android:name="com.example.testtasknetronic.presentation.ui.usersscreen.UsersScreenFragment"
         android:label="fragment_users_screen"
         tools:layout="@layout/fragment_users_screen">
         <action

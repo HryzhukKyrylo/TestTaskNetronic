@@ -1,28 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presetation.ui.usersscreen.UsersScreenFragment">
+    android:orientation="vertical"
+    android:padding="8dp">
 
     <Button
-        android:id="@+id/btnGoToInfo"
+        android:id="@+id/btnGetUsers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="to info"
+        android:text="get users"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnGoToHistory"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvUsers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="8dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    <TextView
+        android:id="@+id/tvNoData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="to history"
-        app:layout_constraintEnd_toEndOf="@id/btnGoToInfo"
-        app:layout_constraintStart_toStartOf="@id/btnGoToInfo"
-        app:layout_constraintTop_toBottomOf="@id/btnGoToInfo" />
+        android:paddingVertical="8dp"
+        android:text="No data"
+        android:visibility="gone"
+        tools:visibility="visible" />
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

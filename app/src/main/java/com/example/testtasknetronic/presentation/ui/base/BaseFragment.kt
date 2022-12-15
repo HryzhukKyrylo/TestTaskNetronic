@@ -1,4 +1,4 @@
-package com.example.testtasknetronic.presetation.ui.base
+package com.example.testtasknetronic.presentation.ui.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
