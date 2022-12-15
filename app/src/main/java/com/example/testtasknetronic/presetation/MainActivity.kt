@@ -1,7 +1,8 @@
-package com.example.testtasknetronic
+package com.example.testtasknetronic.presetation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.testtasknetronic.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
