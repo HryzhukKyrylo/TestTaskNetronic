@@ -9,7 +9,7 @@
         android:id="@+id/ivGif"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:contentDescription="@string/splach_screen_launch_gif"
+        android:contentDescription="@string/splash_screen_launch_gif"
         android:scaleType="centerCrop" />
 
 </FrameLayout>

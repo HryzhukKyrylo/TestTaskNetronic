@@ -25,7 +25,13 @@
         android:id="@+id/userInfoScreenFragment"
         android:name="com.example.testtasknetronic.presentation.ui.userinfoscreen.UserInfoScreenFragment"
         android:label="fragment_user_info_screen"
-        tools:layout="@layout/fragment_user_info_screen" />
+        tools:layout="@layout/fragment_user_info_screen">
+        <argument
+            android:name="userModel"
+            android:defaultValue="@null"
+            app:argType="com.example.testtasknetronic.domain.model.UserModel"
+            app:nullable="true" />
+    </fragment>
     <fragment
         android:id="@+id/usersScreenFragment"
         android:name="com.example.testtasknetronic.presentation.ui.usersscreen.UsersScreenFragment"
@@ -34,7 +40,12 @@
         <action
             android:id="@+id/action_usersScreenFragment_to_userInfoScreenFragment"
             app:destination="@id/userInfoScreenFragment"
-            app:popUpTo="@id/usersScreenFragment" />
+            app:popUpTo="@id/usersScreenFragment">
+            <argument
+                android:name="userModel"
+                app:argType="com.example.testtasknetronic.domain.model.UserModel"
+                app:nullable="true" />
+        </action>
         <action
             android:id="@+id/action_usersScreenFragment_to_historyScreenFragment"
             app:destination="@id/historyScreenFragment"

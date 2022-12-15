@@ -5,8 +5,10 @@ import android.util.Log
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testtasknetronic.databinding.FragmentUsersScreenBinding
+import com.example.testtasknetronic.domain.model.UserModel
 import com.example.testtasknetronic.presentation.ui.adapter.MainAdapter
 import com.example.testtasknetronic.presentation.ui.adapter.MainItemDecoration
 import com.example.testtasknetronic.presentation.ui.base.BaseFragment
@@ -19,7 +21,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class UsersScreenFragment : BaseFragment<FragmentUsersScreenBinding>() {
     private lateinit var recycler: RecyclerView
-    private val adapter = MainAdapter()
+    private lateinit var adapter: MainAdapter
 
     private val viewModel: UsersViewModel by viewModels()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -31,6 +33,9 @@ class UsersScreenFragment : BaseFragment<FragmentUsersScreenBinding>() {
 
     private fun initRecycler() {
         recycler = binding.rvUsers
+        adapter = MainAdapter { item ->
+            viewModel.clickUser(item)
+        }
         recycler.adapter = adapter
         recycler.addItemDecoration(
             MainItemDecoration(verticalSpace = (8.dp).toInt(), horizontalSpace = (8.dp).toInt())
@@ -61,6 +66,16 @@ class UsersScreenFragment : BaseFragment<FragmentUsersScreenBinding>() {
                 }
             }
         }
+
+        viewModel.userClicked.observe(viewLifecycleOwner) { item ->
+            goToUserInfo(item)
+        }
+    }
+
+    private fun goToUserInfo(item: UserModel?) {
+        val action =
+            UsersScreenFragmentDirections.actionUsersScreenFragmentToUserInfoScreenFragment(item)
+        findNavController().navigate(action)
     }
 
     private fun showNoListData(isVisible: Boolean) {

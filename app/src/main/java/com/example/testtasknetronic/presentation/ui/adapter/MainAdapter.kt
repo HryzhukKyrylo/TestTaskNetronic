@@ -8,7 +8,8 @@ import com.example.testtasknetronic.databinding.ItemUserBinding
 import com.example.testtasknetronic.domain.model.UserModel
 import com.example.testtasknetronic.utils.loadImage
 
-class MainAdapter : ListAdapter<UserModel, MainViewHolder>(NumberDiffUtilCallback()) {
+class MainAdapter(val clickListener: (UserModel) -> Unit) :
+    ListAdapter<UserModel, MainViewHolder>(NumberDiffUtilCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
         val binding = ItemUserBinding.inflate(
             LayoutInflater.from(parent.context),
@@ -20,7 +21,7 @@ class MainAdapter : ListAdapter<UserModel, MainViewHolder>(NumberDiffUtilCallbac
 
     override fun onBindViewHolder(holder: MainViewHolder, position: Int) {
         val item = currentList[position]
-        holder.bind(item = item)
+        holder.bind(item = item, clickListener)
     }
 
 }
@@ -29,10 +30,13 @@ class MainViewHolder(private val binding: ItemUserBinding) :
     RecyclerView.ViewHolder(binding.root) {
     fun bind(
         item: UserModel,
+        clickListener: (UserModel) -> Unit,
     ) {
         binding.ivUserPhoto.loadImage(item.pictureThumb)
         binding.tvUserName.text = item.firstName
-
+        binding.root.setOnClickListener {
+            clickListener(item)
+        }
     }
 }
 

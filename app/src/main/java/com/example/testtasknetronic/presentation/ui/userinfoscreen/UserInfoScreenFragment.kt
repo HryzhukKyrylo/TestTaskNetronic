@@ -1,60 +1,60 @@
 package com.example.testtasknetronic.presentation.ui.userinfoscreen
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.testtasknetronic.R
+import com.example.testtasknetronic.databinding.FragmentUserInfoScreenBinding
+import com.example.testtasknetronic.domain.model.UserModel
+import com.example.testtasknetronic.presentation.ui.base.BaseFragment
+import com.example.testtasknetronic.utils.loadImage
+import com.example.testtasknetronic.utils.showShortToast
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class UserInfoScreenFragment : BaseFragment<FragmentUserInfoScreenBinding>() {
+    private val args: UserInfoScreenFragmentArgs by navArgs()
 
-/**
- * A simple [Fragment] subclass.
- * Use the [UserInfoScreenFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class UserInfoScreenFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        if (args.userModel != null) {
+            showUserData(args.userModel!!)
+        } else {
+            requireContext().showShortToast("Incorrect user data")
+            findNavController().navigateUp()
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_info_screen, container, false)
-    }
+    private fun showUserData(userModel: UserModel) {
+        binding.ivUserPhoto.loadImage(userModel.pictureLarge)
+        binding.tvUserName.text =
+            String.format(
+                resources.getString(R.string.user_info_screen_user_name),
+                userModel.firstName
+            )
+        binding.tvUserCell.text =
+            String.format(
+                resources.getString(R.string.user_info_screen_user_cell),
+                userModel.cell
+            )
+        binding.tvUserEmail.text =
+            String.format(
+                resources.getString(R.string.user_info_screen_user_email),
+                userModel.email
+            )
+        binding.tvUserPhone.text =
+            String.format(
+                resources.getString(R.string.user_info_screen_user_phone),
+                userModel.phone
+            )
+        val test = StringBuilder()
+            .append(userModel.country)
+            .append(", ")
+            .append(userModel.city)
+        binding.tvUserCity.text =
+            String.format(
+                resources.getString(R.string.user_info_screen_user_city),
+                test
+            )
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment UserInfoScreenFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            UserInfoScreenFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 }

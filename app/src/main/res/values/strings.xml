@@ -2,5 +2,13 @@
     <string name="app_name">TestTaskNetronic</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="splach_screen_launch_gif">Launch Gif</string>
+    <!--    splash screen-->
+    <string name="splash_screen_launch_gif">Launch Gif</string>
+    <!--    user info screen-->
+    <string name="user_info_screen_user_photo">User photo</string>
+    <string name="user_info_screen_user_name">user name = %1$s</string>
+    <string name="user_info_screen_user_cell">user cell : %1$s</string>
+    <string name="user_info_screen_user_email">email : %1$s</string>
+    <string name="user_info_screen_user_phone">phone : %1$s</string>
+    <string name="user_info_screen_user_city">city : %1$s</string>
 </resources>
