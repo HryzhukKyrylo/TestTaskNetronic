@@ -6,7 +6,7 @@
     <string name="splash_screen_launch_gif">Launch Gif</string>
     <!--    user info screen-->
     <string name="user_info_screen_user_photo">User photo</string>
-    <string name="user_info_screen_user_name">user name = %1$s</string>
+    <string name="user_info_screen_user_name">user name : %1$s</string>
     <string name="user_info_screen_user_cell">user cell : %1$s</string>
     <string name="user_info_screen_user_email">email : %1$s</string>
     <string name="user_info_screen_user_phone">phone : %1$s</string>

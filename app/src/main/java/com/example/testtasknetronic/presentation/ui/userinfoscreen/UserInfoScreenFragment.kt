@@ -26,35 +26,31 @@ class UserInfoScreenFragment : BaseFragment<FragmentUserInfoScreenBinding>() {
 
     private fun showUserData(userModel: UserModel) {
         binding.ivUserPhoto.loadImage(userModel.pictureLarge)
+        val name = StringBuilder()
+            .append(userModel.firstName)
+            .append(" ")
+            .append(userModel.lastName)
         binding.tvUserName.text =
-            String.format(
-                resources.getString(R.string.user_info_screen_user_name),
-                userModel.firstName
-            )
+            stringFromResource(R.string.user_info_screen_user_name, name.toString())
+
         binding.tvUserCell.text =
-            String.format(
-                resources.getString(R.string.user_info_screen_user_cell),
-                userModel.cell
-            )
+            stringFromResource(R.string.user_info_screen_user_cell, userModel.cell)
         binding.tvUserEmail.text =
-            String.format(
-                resources.getString(R.string.user_info_screen_user_email),
-                userModel.email
-            )
+            stringFromResource(R.string.user_info_screen_user_email, userModel.email)
         binding.tvUserPhone.text =
-            String.format(
-                resources.getString(R.string.user_info_screen_user_phone),
-                userModel.phone
-            )
+            stringFromResource(R.string.user_info_screen_user_phone, userModel.phone)
         val test = StringBuilder()
             .append(userModel.country)
             .append(", ")
             .append(userModel.city)
         binding.tvUserCity.text =
-            String.format(
-                resources.getString(R.string.user_info_screen_user_city),
-                test
-            )
+            stringFromResource(R.string.user_info_screen_user_city, test.toString())
+    }
 
+    private fun stringFromResource(idResource: Int, textAppend: String): String {
+        return String.format(
+            resources.getString(idResource),
+            textAppend
+        )
     }
 }
