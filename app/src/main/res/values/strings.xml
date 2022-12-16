@@ -11,4 +11,5 @@
     <string name="user_info_screen_user_email">email : %1$s</string>
     <string name="user_info_screen_user_phone">phone : %1$s</string>
     <string name="user_info_screen_user_city">city : %1$s</string>
+    <string name="history_screen_no_data_history">No data history</string>
 </resources>
