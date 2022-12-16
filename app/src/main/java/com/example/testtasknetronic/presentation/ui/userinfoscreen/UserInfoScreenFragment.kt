@@ -19,7 +19,7 @@ class UserInfoScreenFragment : BaseFragment<FragmentUserInfoScreenBinding>() {
         if (args.userModel != null) {
             showUserData(args.userModel!!)
         } else {
-            requireContext().showShortToast("Incorrect user data")
+            requireContext().showShortToast(getString(R.string.user_info_screen_incorrect_data))
             findNavController().navigateUp()
         }
     }

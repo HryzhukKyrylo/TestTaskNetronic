@@ -1,7 +1,6 @@
 package com.example.testtasknetronic.presentation.ui.usersscreen
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
@@ -19,10 +18,8 @@ import com.example.testtasknetronic.presentation.ui.adapter.MainItemDecoration
 import com.example.testtasknetronic.presentation.ui.base.BaseFragment
 import com.example.testtasknetronic.utils.Status
 import com.example.testtasknetronic.utils.dp
-import com.example.testtasknetronic.utils.showLongToast
 import com.example.testtasknetronic.utils.showShortToast
 import dagger.hilt.android.AndroidEntryPoint
-
 
 @AndroidEntryPoint
 class UsersScreenFragment : BaseFragment<FragmentUsersScreenBinding>() {
@@ -37,14 +34,10 @@ class UsersScreenFragment : BaseFragment<FragmentUsersScreenBinding>() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        // First clear current all the menu items
         menu.clear();
 
-        // Add the new menu items
         inflater.inflate(R.menu.main_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
-
-//        super.onCreateOptionsMenu(menu, inflater);
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -81,7 +74,6 @@ class UsersScreenFragment : BaseFragment<FragmentUsersScreenBinding>() {
         viewModel.userResponse.observe(viewLifecycleOwner) { resource ->
             when (resource.status) {
                 Status.SUCCESS -> {
-                    Log.e("testtest", "initObservers: res = ${resource.data}")
                     if (resource.data != null) {
                         showNoListData(false)
                         adapter.submitList(resource.data)
@@ -96,7 +88,6 @@ class UsersScreenFragment : BaseFragment<FragmentUsersScreenBinding>() {
                     showProgressBar(false)
                 }
                 Status.LOADING -> {
-                    requireContext().showLongToast("Load data")
                     showProgressBar(true)
                 }
             }
