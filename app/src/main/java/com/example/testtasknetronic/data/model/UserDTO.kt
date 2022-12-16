@@ -31,3 +31,16 @@ fun UserModel.toDTO(): UserDTO =
         city = this.city,
         country = this.country
     )
+
+fun UserDTO.toModel(): UserModel =
+    UserModel(
+        firstName = this.firstName,
+        lastName = this.lastName,
+        pictureThumb = this.pictureThumb,
+        pictureLarge = this.pictureLarge,
+        cell = this.cell,
+        email = this.email,
+        phone = this.phone,
+        city = this.city,
+        country = this.country
+    )

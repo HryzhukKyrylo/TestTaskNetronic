@@ -11,7 +11,7 @@ interface UserDao {
     fun saveListUsers(user: List<UserDTO>)
 
     @Query("SELECT * FROM my_user_table")
-    fun getAll(): List<UserDTO>
+    fun getAll(): List<UserDTO>?
 
     @Query("DELETE FROM my_user_table")
     fun deleteAll()

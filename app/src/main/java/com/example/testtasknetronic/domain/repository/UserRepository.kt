@@ -7,4 +7,5 @@ import retrofit2.Response
 interface UserRepository {
     suspend fun getUsers(number: Int): Response<UserResponse>
     suspend fun saveListUsers(data: List<UserModel>)
+    suspend fun getListHistory(): List<UserModel>?
 }

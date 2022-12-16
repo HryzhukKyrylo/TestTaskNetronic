@@ -5,13 +5,13 @@ import javax.inject.Inject
 
 interface LocalStorage {
     fun saveListUsers(data: List<UserDTO>)
-    fun getListHistory(): List<UserDTO>
+    fun getListHistory(): List<UserDTO>?
 }
 
 class LocalStorageImpl @Inject constructor(
     private val database: UserDatabase
 ) : LocalStorage {
-    override fun getListHistory(): List<UserDTO> {
+    override fun getListHistory(): List<UserDTO>? {
         return database.userDao().getAll()
     }
 
