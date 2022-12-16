@@ -15,6 +15,7 @@ class GetUsersUseCase @Inject constructor(
             val resVal = repository.getUsers(requaireRandomNumber)
             if (resVal.isSuccessful) {
                 val listUsers = resVal.body()?.results?.map { it.mapToDomain() } ?: emptyList()
+                repository.saveListUsers(listUsers)
                 Resource.success(listUsers)
             } else {
                 Resource.error(null, "Something went wrong")
