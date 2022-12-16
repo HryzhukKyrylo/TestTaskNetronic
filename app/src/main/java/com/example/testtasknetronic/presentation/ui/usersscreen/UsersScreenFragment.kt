@@ -11,6 +11,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.recyclerview.widget.RecyclerView
+import com.example.testtasknetronic.R
 import com.example.testtasknetronic.databinding.FragmentUsersScreenBinding
 import com.example.testtasknetronic.domain.model.UserModel
 import com.example.testtasknetronic.presentation.ui.adapter.MainAdapter
@@ -27,7 +28,6 @@ import dagger.hilt.android.AndroidEntryPoint
 class UsersScreenFragment : BaseFragment<FragmentUsersScreenBinding>() {
     private lateinit var recycler: RecyclerView
     private lateinit var adapter: MainAdapter
-    private lateinit var menuItem: MenuItem
 
     private val viewModel: UsersViewModel by viewModels()
 
@@ -41,18 +41,15 @@ class UsersScreenFragment : BaseFragment<FragmentUsersScreenBinding>() {
         menu.clear();
 
         // Add the new menu items
-        inflater.inflate(com.example.testtasknetronic.R.menu.main_menu, menu);
-
+        inflater.inflate(R.menu.main_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
+
+//        super.onCreateOptionsMenu(menu, inflater);
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-//            com.example.testtasknetronic.R.id.historyScreenFragment -> {
-//                requireContext().showShortToast("History")
-//                return true
-//            }
-            com.example.testtasknetronic.R.id.action_changeTheme -> {
+            R.id.action_changeTheme -> {
                 requireContext().showShortToast("Theme")
                 return true
             }
