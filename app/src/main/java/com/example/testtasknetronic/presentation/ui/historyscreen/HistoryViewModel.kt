@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.testtasknetronic.domain.model.UserModel
 import com.example.testtasknetronic.domain.usecases.GetHistoryUseCase
 import com.example.testtasknetronic.utils.Resource
+import com.example.testtasknetronic.utils.SingleLiveEvent
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -19,6 +20,9 @@ class HistoryViewModel @Inject constructor(
     private val _historyUsers: MutableLiveData<Resource<List<UserModel>>> = MutableLiveData()
     val historyUsers: LiveData<Resource<List<UserModel>>> = _historyUsers
 
+    private val _userModelClicked: MutableLiveData<UserModel> = SingleLiveEvent()
+    val userModelClicked: LiveData<UserModel> = _userModelClicked
+
     init {
         getHistoryUsers()
     }
@@ -29,5 +33,9 @@ class HistoryViewModel @Inject constructor(
             val list = getHistoryUseCase.execute()
             _historyUsers.postValue(list)
         }
+    }
+
+    fun clickUser(model: UserModel) {
+        _userModelClicked.value = model
     }
 }

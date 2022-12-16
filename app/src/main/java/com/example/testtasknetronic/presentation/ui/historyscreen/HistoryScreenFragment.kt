@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.testtasknetronic.databinding.FragmentHistoryScreenBinding
+import com.example.testtasknetronic.domain.model.UserModel
 import com.example.testtasknetronic.presentation.ui.adapter.MainAdapter
 import com.example.testtasknetronic.presentation.ui.adapter.MainItemDecoration
 import com.example.testtasknetronic.presentation.ui.base.BaseFragment
@@ -47,6 +49,18 @@ class HistoryScreenFragment : BaseFragment<FragmentHistoryScreenBinding>() {
                 }
             }
         }
+
+        viewModel.userModelClicked.observe(viewLifecycleOwner) {
+            goToUserInfo(it)
+        }
+    }
+
+    private fun goToUserInfo(model: UserModel?) {
+        val action =
+            HistoryScreenFragmentDirections.actionHistoryScreenFragmentToUserInfoScreenFragment(
+                model
+            )
+        findNavController().navigate(action)
     }
 
     private fun showData(isVisible: Boolean) {
@@ -62,8 +76,7 @@ class HistoryScreenFragment : BaseFragment<FragmentHistoryScreenBinding>() {
     private fun initRecycler() {
         recycler = binding.rvHistoryUsers
         adapter = MainAdapter {
-            //todo implement
-//            viewModel.clickUser(it)
+            viewModel.clickUser(it)
         }
         recycler.adapter = adapter
         recycler.addItemDecoration(

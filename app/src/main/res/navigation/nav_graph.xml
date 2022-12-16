@@ -20,7 +20,17 @@
         android:id="@+id/historyScreenFragment"
         android:name="com.example.testtasknetronic.presentation.ui.historyscreen.HistoryScreenFragment"
         android:label="fragment_history_screen"
-        tools:layout="@layout/fragment_history_screen" />
+        tools:layout="@layout/fragment_history_screen" >
+        <action
+            android:id="@+id/action_historyScreenFragment_to_userInfoScreenFragment"
+            app:destination="@id/userInfoScreenFragment" >
+            <argument
+                android:name="userModel"
+                app:argType="com.example.testtasknetronic.domain.model.UserModel"
+                app:nullable="true" />
+
+        </action>
+    </fragment>
     <fragment
         android:id="@+id/userInfoScreenFragment"
         android:name="com.example.testtasknetronic.presentation.ui.userinfoscreen.UserInfoScreenFragment"
