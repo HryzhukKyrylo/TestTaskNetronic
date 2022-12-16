@@ -3,6 +3,8 @@ package com.example.testtasknetronic.di
 import android.content.Context
 import androidx.room.Room
 import com.example.testtasknetronic.data.localstorage.UserDatabase
+import com.example.testtasknetronic.data.preferences.SharedPreferencesStorage
+import com.example.testtasknetronic.data.preferences.SharedPreferencesStorageImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,4 +24,11 @@ object DataModule {
             "private_user_database"
         ).build()
     }
+
+    @Provides
+    @Singleton
+    fun provideSharedPreferencesStorage(@ApplicationContext appContext: Context): SharedPreferencesStorage {
+        return SharedPreferencesStorageImpl(appContext)
+    }
+
 }

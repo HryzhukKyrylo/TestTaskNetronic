@@ -11,6 +11,13 @@
     <string name="user_info_screen_user_email">email : %1$s</string>
     <string name="user_info_screen_user_phone">phone : %1$s</string>
     <string name="user_info_screen_user_city">city : %1$s</string>
-    <string name="history_screen_no_data_history">No data history</string>
     <string name="user_info_screen_incorrect_data">Incorrect user data</string>
+    <!--    history screen-->
+    <string name="history_screen_no_data_history">No data history</string>
+    <!--    users screen-->
+    <string name="users_screen_day_theme">Day Theme</string>
+    <string name="users_screen_night_theme">Night Theme</string>
+<!--    other-->
+    <string name="menu_item_theme">Theme</string>
+
 </resources>

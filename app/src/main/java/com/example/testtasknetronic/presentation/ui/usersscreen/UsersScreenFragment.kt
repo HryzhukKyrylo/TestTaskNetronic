@@ -27,6 +27,7 @@ class UsersScreenFragment : BaseFragment<FragmentUsersScreenBinding>() {
     private lateinit var adapter: MainAdapter
 
     private val viewModel: UsersViewModel by viewModels()
+    private var nightMode: Boolean? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,22 +35,32 @@ class UsersScreenFragment : BaseFragment<FragmentUsersScreenBinding>() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        menu.clear();
-
-        inflater.inflate(R.menu.main_menu, menu);
-        super.onCreateOptionsMenu(menu, inflater);
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.main_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
             R.id.action_changeTheme -> {
                 requireContext().showShortToast("Theme")
+                viewModel.switchNightMode()
                 return true
             }
-            else -> {}
+            else -> {
+                item.onNavDestinationSelected(findNavController())
+                        || super.onOptionsItemSelected(item)
+            }
         }
-        return item.onNavDestinationSelected(findNavController())
-                || super.onOptionsItemSelected(item)
+    }
+
+    override fun onPrepareOptionsMenu(menu: Menu) {
+        super.onPrepareOptionsMenu(menu)
+        val item = menu.findItem(R.id.action_changeTheme)
+        item.title = if (nightMode == true) {
+            getString(R.string.users_screen_day_theme)
+        } else {
+            getString(R.string.users_screen_night_theme)
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -96,6 +107,15 @@ class UsersScreenFragment : BaseFragment<FragmentUsersScreenBinding>() {
         viewModel.userClicked.observe(viewLifecycleOwner) { item ->
             goToUserInfo(item)
         }
+
+        viewModel.isNightMode.observe(viewLifecycleOwner) {
+            updateOptionsMenu(it)
+        }
+    }
+
+    private fun updateOptionsMenu(isOn: Boolean) {
+        nightMode = isOn
+        requireActivity().invalidateOptionsMenu()
     }
 
     private fun goToUserInfo(item: UserModel?) {

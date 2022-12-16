@@ -4,6 +4,7 @@ import com.example.testtasknetronic.data.api.ApiService
 import com.example.testtasknetronic.data.localstorage.LocalStorage
 import com.example.testtasknetronic.data.localstorage.LocalStorageImpl
 import com.example.testtasknetronic.data.localstorage.UserDatabase
+import com.example.testtasknetronic.data.preferences.SharedPreferencesStorage
 import com.example.testtasknetronic.data.repository.UserRepositoryImpl
 import com.example.testtasknetronic.domain.repository.UserRepository
 import dagger.Module
@@ -18,8 +19,12 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideUserRepository(apiService: ApiService, localStorage: LocalStorage): UserRepository =
-        UserRepositoryImpl(apiService, localStorage)
+    fun provideUserRepository(
+        apiService: ApiService,
+        localStorage: LocalStorage,
+        sharedPreferencesStorage: SharedPreferencesStorage
+    ): UserRepository =
+        UserRepositoryImpl(apiService, localStorage, sharedPreferencesStorage)
 
 
     @Provides

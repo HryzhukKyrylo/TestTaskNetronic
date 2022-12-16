@@ -8,4 +8,6 @@ interface UserRepository {
     suspend fun getUsers(number: Int): Response<UserResponse>
     suspend fun saveListUsers(data: List<UserModel>)
     suspend fun getListHistory(): List<UserModel>?
+    fun getNightMode(): Int
+    fun saveNightMode(mode: Int)
 }
